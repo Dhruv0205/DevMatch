@@ -50,7 +50,7 @@ authRouter.post("/login", async(req,res)=>{
          const Token = await JWT.sign({_id: user._id}, "MumbaiTrip@2024",);
          console.log(Token);
           res.cookie("Token", Token);
-          res.send(user);
+          res.send("Login successfull");
         }
         else{
           throw new Error("Password not valid");

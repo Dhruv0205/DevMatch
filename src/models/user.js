@@ -5,6 +5,7 @@ const userSchema = new mongoose.Schema({
     firstName:{
         type: "String",
         required:true,
+        index: true,
         minLength:3,
         maxLenght:50,
     },
@@ -17,7 +18,7 @@ const userSchema = new mongoose.Schema({
     
     email:{
         type: "String",
-        unique:true,
+        unique:true, // it is a feature of mongodb when we make any field unique it treat those field as index(when we make any field as index it makes search efficient fast when we search using a field which we have make unique or set index=true)
         required:true,
         trim: true,
         lowercase:true,
