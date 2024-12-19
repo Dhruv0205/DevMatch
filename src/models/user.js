@@ -44,7 +44,11 @@ const userSchema = new mongoose.Schema({
     gender:{
         type: "String",
     },
-    skills:[String],
+    about:{
+        type: "String",
+    }
+    ,
+    skills:{type: [String],},
     photoUrl:{
         type:"String",
         validate(value){
