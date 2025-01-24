@@ -64,8 +64,8 @@ authRouter.post("/login", async (req, res) => {
     if (isPasswordValid) {
       const Token = await JWT.sign({ _id: user._id }, "MumbaiTrip@2024");
       console.log(Token);
-      res.cookie("Token", Token);
-      res.send("Login successfull");
+      res.cookie("Token", Token, {expires: new Date(Date.now()+8*3600000)});
+      res.send(user);
     } else {
       throw new Error("Password not valid");
     }
@@ -75,8 +75,8 @@ authRouter.post("/login", async (req, res) => {
 });
 
 authRouter.post("/logout", async (req, res) => {
-  res.cookie("token", null, { expires: new Date(Date.now()) });
-  res.send("Logout");
+  res.cookie("Token", null, { expires: new Date(Date.now()) });
+  res.send("Logout successfully");
 });
 
 module.exports = authRouter;

@@ -42,7 +42,7 @@ return res.status(400).json({message: "Already connected"});
    const data = await connectionRequest.save();
 
    res.json({
-      message: "Connection Request Sent Successfully!",
+      message: status == "interested" ? `${req.user.firstName}, your connection request sent successfully` : `${req.user.firstName}, you have ignored the user`,
       data,
    });
 
@@ -70,9 +70,9 @@ requestRouter.post("/request/review/:status/:requestId", userAuth ,async (req, r
 
     connectionRequest.status = status;
 
-    await connectionRequest.save();
+  const data = await connectionRequest.save();
 
-   res.json({message:"connected successfully!!!"});
+   res.json({message:"connection request" + status,  data });
 
     }
     catch(err){
