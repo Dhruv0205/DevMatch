@@ -72,7 +72,7 @@ requestRouter.post("/request/review/:status/:requestId", userAuth ,async (req, r
 
   const data = await connectionRequest.save();
 
-   res.json({message:"connection request" + status,  data });
+   res.json({message:"connection request " + status,  data });
 
     }
     catch(err){
