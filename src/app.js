@@ -28,7 +28,7 @@ app.use("/", userRouter);
 connectDB()
   .then(() => {
     console.log("Database connected");
-    app.listen("0205", () => {  // Corrected to listen on port 205
+    app.listen("8000", () => {  // Corrected to listen on port 8000
       console.log("Server listening on port 205");
     });
   })
