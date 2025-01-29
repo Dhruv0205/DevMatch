@@ -3,6 +3,7 @@ const connectDB = require("./config/database");
 const app = express();
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+require('dotenv').config();
 
 app.use(cors({
   origin: "http://localhost:5173/",  // Allow the frontend on this origin
@@ -28,8 +29,8 @@ app.use("/", userRouter);
 connectDB()
   .then(() => {
     console.log("Database connected");
-    app.listen("8000", () => {  // Corrected to listen on port 8000
-      console.log("Server listening on port 205");
+    app.listen(process.env.PORT, () => {  // Corrected to listen on port 8000
+      console.log("Server listening on port 8000");
     });
   })
   .catch(() => {
